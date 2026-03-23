@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 public class Appointment {
     private int appointmentID;
     private LocalDateTime createdDateTime;
-    private LocalDateTime appointmentDateTime;
     private String note;
     private int totalDuration;
     private int status;

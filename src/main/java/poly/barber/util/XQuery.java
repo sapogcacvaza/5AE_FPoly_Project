@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
  * Lớp tiện ích hỗ trợ truy vấn và chuyển đổi sang đối tượng
  *
@@ -68,29 +69,12 @@ public class XQuery {
     private static <B> B readBean(ResultSet resultSet, Class<B> beanClass) throws Exception {
         B bean = beanClass.getDeclaredConstructor().newInstance();
         Method[] methods = beanClass.getDeclaredMethods();
-
-        for (Method method : methods) {
+        for(Method method: methods){
             String name = method.getName();
-
             if (name.startsWith("set") && method.getParameterCount() == 1) {
                 try {
-                    String columnName = name.substring(3);
-
-                    Object value = resultSet.getObject(columnName);
-
-                    // 🔥 FIX QUAN TRỌNG Ở ĐÂY
-                    if (value != null) {
-                        Class<?> paramType = method.getParameterTypes()[0];
-
-                        if (value instanceof java.sql.Timestamp && paramType.equals(java.time.LocalDateTime.class)) {
-                            value = ((java.sql.Timestamp) value).toLocalDateTime();
-                        } else if (value instanceof java.sql.Date && paramType.equals(java.time.LocalDate.class)) {
-                            value = ((java.sql.Date) value).toLocalDate();
-                        }
-                    }
-
+                    Object value = resultSet.getObject(name.substring(3));
                     method.invoke(bean, value);
-
                 } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException | SQLException e) {
                     System.out.printf("+ Column '%s' not found!\r\n", name.substring(3));
                 }
@@ -98,9 +82,15 @@ public class XQuery {
         }
         return bean;
     }
-
-    public static void main(String[] args) {
-
+    
+    public static void update(String sql, Object... values) {
+    try {
+        // Gọi đến lớp XJdbc của bạn để thực thi
+        XJdbc.executeUpdate(sql, values);
+    } catch (Exception ex) {
+        throw new RuntimeException("Lỗi thực thi SQL: " + ex.getMessage(), ex);
     }
+}
 
+   
 }
