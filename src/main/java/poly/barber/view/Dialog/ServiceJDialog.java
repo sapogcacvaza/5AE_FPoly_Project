@@ -34,11 +34,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
         dcbm = (DefaultComboBoxModel) cboLoai.getModel();
         showTable(sr.getAll());
         showComBoBox(scr.getAll());
-        DefaultComboBoxModel filterModel = (DefaultComboBoxModel) cboLocLoai.getModel();
-        filterModel.removeAllElements();
-        for (ServiceCategory sc : scr.getAll()) {
-            filterModel.addElement(sc);
-        }
+        
     }
 
     /**
@@ -64,6 +60,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
         txtGia = new javax.swing.JTextField();
         txtTime = new javax.swing.JTextField();
         cboLoai = new javax.swing.JComboBox<>();
+        btnThemLoai = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         cboLocLoai = new javax.swing.JComboBox<>();
@@ -107,6 +104,13 @@ public class ServiceJDialog extends javax.swing.JDialog {
             }
         });
 
+        btnThemLoai.setText("+");
+        btnThemLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemLoaiActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -125,11 +129,14 @@ public class ServiceJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnThemLoai))
                     .addComponent(txtMa, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
                     .addComponent(txtTen)
                     .addComponent(txtGia)
-                    .addComponent(txtTime)
-                    .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTime))
                 .addGap(72, 72, 72))
         );
         jPanel3Layout.setVerticalGroup(
@@ -154,9 +161,10 @@ public class ServiceJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel5)
                     .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnThemLoai)
+                    .addComponent(jLabel6))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -245,7 +253,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
                     .addComponent(btnLoc)
                     .addComponent(cboLocLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -283,14 +291,18 @@ public class ServiceJDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_txtGiaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        try {
-            Service s = getForm();
-            sr.add(s); // Call repository
-            javax.swing.JOptionPane.showMessageDialog(this, "Thêm dịch vụ mới thành công!");
-            showTable(sr.getAll()); // Refresh table
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Lỗi: Kiểm tra lại định dạng số (Giá/Thời gian)!");
+        if (validateForm()) { // Nếu vượt qua các bước kiểm tra
+            try {
+                Service s = getForm();
+                sr.add(s);
+                javax.swing.JOptionPane.showMessageDialog(this, "Thêm thành công!");
+                showTable(sr.getAll());
+                // clearForm(); // Nên có hàm này để xóa trắng form sau khi thêm
+            } catch (Exception e) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Lỗi lưu dữ liệu: " + e.getMessage());
+            }
         }
+        clearForm();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -302,6 +314,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this, "Lỗi cập nhật: " + e.getMessage());
         }
+        clearForm();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocActionPerformed
@@ -319,7 +332,12 @@ public class ServiceJDialog extends javax.swing.JDialog {
                 javax.swing.JOptionPane.showMessageDialog(this, "Không có dịch vụ nào thuộc loại này.");
             }
         }
+        
     }//GEN-LAST:event_btnLocActionPerformed
+
+    private void btnThemLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemLoaiActionPerformed
+
+    }//GEN-LAST:event_btnThemLoaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +385,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
     private javax.swing.JButton btnLoc;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThemLoai;
     private javax.swing.JComboBox<String> cboLoai;
     private javax.swing.JComboBox<String> cboLocLoai;
     private javax.swing.JLabel jLabel1;
@@ -390,8 +409,16 @@ public class ServiceJDialog extends javax.swing.JDialog {
     private void showTable(List<Service> all) {
         dtm.setRowCount(0);
         for (Service s : all) {
+            // Lấy tên loại dựa trên ID
+            ServiceCategory cat = scr.getOne(s.getServiceCategoryID());
+            String tenLoai = (cat != null) ? cat.getServiceCategoryName() : "N/A";
+
             dtm.addRow(new Object[]{
-                s.getServiceID(), s.getServiceName(), s.getPrice(), s.getDuration(), s.getServiceCategoryID()
+                s.getServiceID(),
+                s.getServiceName(),
+                s.getPrice(),
+                s.getDuration(),
+                tenLoai // Hiển thị tên thay vì ID số
             });
         }
     }
@@ -446,5 +473,77 @@ public class ServiceJDialog extends javax.swing.JDialog {
             s.setServiceCategoryID(selectedCat.getServiceCategoryID());
         }
         return s;
+    }
+
+    private boolean validateForm() {
+        String ten = txtTen.getText().trim();
+        String giaStr = txtGia.getText().trim();
+        String thoiGianStr = txtTime.getText().trim();
+        String maStr = txtMa.getText().trim();
+
+        // 1. Kiểm tra trống
+        if (ten.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Tên dịch vụ không được để trống!");
+            txtTen.requestFocus();
+            return false;
+        }
+
+        if (giaStr.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Giá không được để trống!");
+            txtGia.requestFocus();
+            return false;
+        }
+
+        // 2. Kiểm tra định dạng số
+        try {
+            new java.math.BigDecimal(giaStr);
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Giá phải là số hợp lệ!");
+            return false;
+        }
+
+        try {
+            int time = Integer.parseInt(thoiGianStr);
+            if (time <= 0) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Thời gian phải là số nguyên dương!");
+            return false;
+        }
+
+        // 3. KIỂM TRA TRÙNG TÊN (QUAN TRỌNG)
+        Service sCheckTen = sr.getByName(ten); // Giả sử bạn đã thêm hàm getByName vào Repository
+
+        // Trường hợp THÊM MỚI (txtMa trống)
+        if (maStr.isEmpty()) {
+            if (sCheckTen != null) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Tên dịch vụ '" + ten + "' đã tồn tại!");
+                txtTen.requestFocus();
+                return false;
+            }
+        } // Trường hợp CẬP NHẬT (txtMa có giá trị)
+        else {
+            int idHienTai = Integer.parseInt(maStr);
+            // Nếu tìm thấy tên trùng nhưng ID lại khác ID đang sửa -> Trùng của người khác
+            if (sCheckTen != null && sCheckTen.getServiceID() != idHienTai) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Tên dịch vụ này đã được sử dụng bởi mã khác!");
+                txtTen.requestFocus();
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void clearForm() {
+        txtMa.setText("");
+        txtTen.setText("");
+        txtGia.setText("");
+        txtTime.setText("");
+        if (cboLoai.getItemCount() > 0) {
+            cboLoai.setSelectedIndex(0);
+        }
+        txtTen.requestFocus();
     }
 }
