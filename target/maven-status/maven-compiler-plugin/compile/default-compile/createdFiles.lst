@@ -1,4 +1,5 @@
 poly\barber\service\AppointmentDetailService.class
+poly\barber\view\dialog\AppointmentJDialog$12.class
 poly\barber\entity\BarberPosition.class
 poly\barber\service\ServiceService.class
 poly\barber\repository\Impl\AppointmentRepositoryImpl.class
@@ -24,11 +25,13 @@ poly\barber\controller\CrudController.class
 poly\barber\entity\Account$AccountBuilder.class
 poly\barber\entity\BarberPosition$BarberPositionBuilder.class
 poly\barber\entity\AppointmentDetail.class
+poly\barber\repository\Impl\ServiceCategoryRepositoryImpl.class
 poly\barber\entity\Appointment.class
 poly\barber\service\BarberService.class
 poly\barber\entity\Appointment$AppointmentBuilder.class
 poly\barber\entity\Service$ServiceBuilder.class
 poly\barber\entity\ServiceCategory.class
+poly\barber\repository\Impl\CustomerRepositoryImpl.class
 poly\barber\entity\Account.class
 poly\barber\entity\Employee$EmployeeBuilder.class
 poly\barber\view\dialog\AppointmentJDialog$5.class
@@ -38,6 +41,7 @@ poly\barber\repository\Impl\ServiceRepositoryImpl.class
 poly\barber\view\Barber5AEJFrame.class
 poly\barber\view\dialog\AppointmentJDialog$8.class
 poly\barber\entity\AppointmentDetail$AppointmentDetailBuilder.class
+poly\barber\service\ServiceCategoryService.class
 poly\barber\controller\Impl\AppointmentController.class
 poly\barber\entity\Employee.class
 poly\barber\entity\Customer.class
@@ -49,6 +53,8 @@ poly\barber\util\XDate.class
 poly\barber\view\dialog\AppointmentJDialog$1.class
 poly\barber\entity\InvoiceDetail$InvoiceDetailBuilder.class
 poly\barber\entity\Payment.class
+poly\barber\service\CustomerService.class
+poly\barber\view\dialog\AppointmentJDialog$13.class
 poly\barber\repository\ICommonRepository.class
 poly\barber\service\AppointmentService.class
 poly\barber\util\TimeRange.class
@@ -61,5 +67,5 @@ poly\barber\view\dialog\AppointmentJDialog.class
 poly\barber\entity\PaymentMethod.class
 poly\barber\repository\Impl\AppointmentDetatilRepositoryImpl.class
 poly\barber\view\dialog\AppointmentJDialog$7.class
-poly\barber\view\dialog\AppointmentJDialog$11$1.class
+poly\barber\view\dialog\AppointmentJDialog$13$1.class
 poly\barber\view\dialog\AppointmentJDialog$10.class

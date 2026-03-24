@@ -1,27 +1,27 @@
 package poly.barber.repository.Impl;
 
 import java.util.List;
-import poly.barber.entity.Service;
+import poly.barber.entity.ServiceCategory;
 import poly.barber.repository.ICommonRepository;
 import poly.barber.util.XQuery;
 
-public class ServiceRepositoryImpl implements ICommonRepository<Service, Integer> {
+public class ServiceCategoryRepositoryImpl implements ICommonRepository<ServiceCategory, Integer> {
 
-    String getAll = "select * from Service";
-    String getOne = "select * from Service where ServiceID = ?";
+    String getAll = "select * from ServiceCategory";
+    String getOne = "select * from ServiceCategory where ServiceCategoryID = ?";
 
     @Override
-    public List<Service> getAll() {
-        return XQuery.getBeanList(Service.class, getAll);
+    public List<ServiceCategory> getAll() {
+        return XQuery.getBeanList(ServiceCategory.class, getAll);
     }
 
     @Override
-    public Service getOne(Integer id) {
-        return XQuery.getSingleBean(Service.class, getOne, id);
+    public ServiceCategory getOne(Integer id) {
+        return XQuery.getSingleBean(ServiceCategory.class, getOne, id);
     }
 
     @Override
-    public void add(Service obj) {
+    public void add(ServiceCategory obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -31,7 +31,7 @@ public class ServiceRepositoryImpl implements ICommonRepository<Service, Integer
     }
 
     @Override
-    public void update(Service obj) {
+    public void update(ServiceCategory obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 

@@ -1,5 +1,6 @@
 package poly.barber.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import poly.barber.entity.Service;
 import poly.barber.repository.Impl.ServiceRepositoryImpl;
@@ -8,11 +9,23 @@ public class ServiceService {
 
     ServiceRepositoryImpl repo = new ServiceRepositoryImpl();
 
+    public List<String> fillToComboServiceName(List<Service> lst) {
+        List<String> serviceName = new ArrayList<>();
+
+        serviceName.add(" ");
+
+        for (Service s : lst) {
+            serviceName.add(s.getServiceName());
+        }
+
+        return serviceName;
+    }
+
     public List<Service> getAll() {
         return repo.getAll();
     }
 
-    public Service getOne(int serviceID) {
-        return repo.getOne(serviceID);
+    public Service getOne(int id) {
+        return repo.getOne(id);
     }
 }

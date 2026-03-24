@@ -50,23 +50,26 @@ public class AppointmentService {
         return repo.getAll();
     }
 
-//    public List<Object[]> getWeekCalendar() {
-//        return repo.getWeekCalendar();
-//    }
-//
-//    public List<Object[]> getLastWeekCalendar() {
-//        return repo.getLastWeekCalendar();
-//    }
-//
-//    public List<Object[]> getNextWeekCalendar() {
-//        return repo.getNextWeekCalendar();
-//    }
     public List<Object[]> getUniversalCalendar(int weekIndex, int status, String barber, String customer) {
         return repo.getUniversalCalendar(weekIndex, status, barber, customer);
     }
 
-    public static void main(String[] args) {
-        AppointmentService ser = new AppointmentService();
+    public List<String> fillToComboTimeRange() {
+        List<String> times = new ArrayList<>();
 
+        LocalTime start = LocalTime.of(8, 0);
+        LocalTime end = LocalTime.of(21, 30);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        times.add("");
+
+        while (!start.isAfter(end)) {
+            times.add(start.format(formatter));
+            start = start.plusMinutes(30);
+        }
+
+        return times;
     }
+
 }

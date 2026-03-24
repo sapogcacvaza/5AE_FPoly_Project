@@ -68,7 +68,7 @@
                       <Component id="cboBarber" min="-2" pref="186" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="cboWeek" min="-2" pref="187" max="-2" attributes="0"/>
-                      <EmptySpace pref="243" max="32767" attributes="0"/>
+                      <EmptySpace pref="282" max="32767" attributes="0"/>
                       <Component id="btnAddAppoint" min="-2" pref="103" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
                   </Group>
@@ -241,8 +241,8 @@
         <Container class="javax.swing.JPanel" name="panelCrud">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="BI&#x1ec2;U M&#x1eaa;U">
-                <Property name="tabTitle" type="java.lang.String" value="BI&#x1ec2;U M&#x1eaa;U"/>
+              <JTabbedPaneConstraints tabName="&#x110;&#x1eb6;T L&#x1eca;CH">
+                <Property name="tabTitle" type="java.lang.String" value="&#x110;&#x1eb6;T L&#x1eca;CH"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -250,27 +250,72 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton4" max="32767" attributes="0"/>
-                          <Component id="jButton2" max="32767" attributes="0"/>
-                          <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton6" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton7" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="btnChooseCustomer" pref="150" max="32767" attributes="0"/>
+                                          <Component id="btnChooseDate" alignment="0" pref="150" max="32767" attributes="0"/>
+                                          <Component id="cboCategory" pref="150" max="32767" attributes="0"/>
+                                          <Component id="cboService" alignment="0" pref="150" max="32767" attributes="0"/>
+                                          <Component id="cboTimeRange" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="cboCustomer" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lblCusName1" max="32767" attributes="0"/>
+                                          <Component id="lblCusName" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblDate" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblServiceCategory" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblService" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="lblAppointmentTime" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="btnBarber" pref="150" max="32767" attributes="0"/>
+                                          <Component id="cboBarberName" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="lblBarberName" min="-2" pref="65" max="-2" attributes="0"/>
+                                          <Component id="lblBarberPosition" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lblQuantity" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton3" min="-2" pref="150" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel2" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtCustomerName" max="32767" attributes="0"/>
+                                  <Component id="txtCustomerPhone" max="32767" attributes="0"/>
+                                  <Component id="txtAppointmentDate" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtServiceCategoryName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtServiceName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtBarberName" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtBarberPosition" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtQuantity" max="32767" attributes="0"/>
+                                  <Component id="txtAppointmentTime" alignment="0" pref="142" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAddService" min="-2" pref="444" max="-2" attributes="0"/>
+                          <Component id="lblNote" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="606" max="32767" attributes="0"/>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane2" alignment="1" min="-2" pref="777" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="txtNote" min="-2" pref="444" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTotalAmount" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnAddAppointment" min="-2" pref="314" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -279,70 +324,161 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jButton2" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel1" alignment="3" max="32767" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel2" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnChooseCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCusName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblCusName1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCustomerPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboCustomer" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblDate" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="btnChooseDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAppointmentDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cboCategory" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="lblServiceCategory" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtServiceCategoryName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cboService" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblService" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtServiceName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cboTimeRange" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtAppointmentTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblAppointmentTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="btnBarber" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblBarberName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBarberName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="lblBarberPosition" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtBarberPosition" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cboBarberName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblQuantity" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAddService" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jButton4" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="lblTotalAmount" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton5" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton6" min="-2" pref="37" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton7" min="-2" pref="37" max="-2" attributes="0"/>
+                              <Component id="btnAddAppointment" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNote" min="-2" pref="168" max="-2" attributes="0"/>
+                          <Component id="lblNote" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="347" max="32767" attributes="0"/>
+                      <EmptySpace pref="202" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="btnChooseCustomer">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CH&#x1ecc;N KH&#xc1;CH H&#xc0;NG"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="lblCusName">
               <Properties>
                 <Property name="text" type="java.lang.String" value="T&#xca;N KH&#xc1;CH H&#xc0;NG:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton3">
+            <Component class="javax.swing.JButton" name="btnChooseDate">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CH&#x1ecc;N NG&#xc0;Y"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="lblDate">
               <Properties>
                 <Property name="text" type="java.lang.String" value="NG&#xc0;Y:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton4">
+            <Component class="javax.swing.JComboBox" name="cboCategory">
               <Properties>
-                <Property name="text" type="java.lang.String" value="LO&#x1ea0;I D&#x1eca;CH V&#x1ee4; 1"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboCategoryActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboService">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCusName1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="S&#x1ed0; &#x110;T KH&#xc1;CH H&#xc0;NG:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton5">
+            <Component class="javax.swing.JButton" name="btnAddService">
               <Properties>
-                <Property name="text" type="java.lang.String" value="LO&#x1ea0;I D&#x1eca;CH V&#x1ee4; 2"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="TH&#xca;M D&#x1eca;CH V&#x1ee4;"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton6">
+            <Component class="javax.swing.JComboBox" name="cboTimeRange">
               <Properties>
-                <Property name="text" type="java.lang.String" value="LO&#x1ea0;I D&#x1eca;CH V&#x1ee4; 3"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnBarber">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CH&#x1ecc;N TH&#x1ee2; C&#x1eae;T T&#xd3;C"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton7">
+            <Component class="javax.swing.JLabel" name="lblBarberName">
               <Properties>
-                <Property name="text" type="java.lang.String" value="LO&#x1ea0;I D&#x1eca;CH V&#x1ee4; 4"/>
+                <Property name="text" type="java.lang.String" value="T&#xca;N TH&#x1ee2;:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblBarberPosition">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="V&#x1eca; TR&#xcd;:"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -352,20 +488,115 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="jTable1">
+                <Component class="javax.swing.JTable" name="tblAppointment">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="0">
-                        <Column editable="true" title="T&#xca;N D&#x1eca;CH V&#x1ee4;" type="java.lang.Object"/>
-                        <Column editable="true" title="GI&#xc1; D&#x1eca;CH V&#x1ee4;" type="java.lang.Object"/>
-                        <Column editable="true" title="TH&#x1edc;I GIAN" type="java.lang.Object"/>
-                        <Column editable="true" title="LO&#x1ea0;I D&#x1eca;CH V&#x1ee4;" type="java.lang.Object"/>
+                      <Table columnCount="10" rowCount="0">
+                        <Column editable="true" title="M&#xe3; DV" type="java.lang.Object"/>
+                        <Column editable="true" title="Lo&#x1ea1;i DV" type="java.lang.Object"/>
+                        <Column editable="true" title="T&#xea;n DV" type="java.lang.Object"/>
+                        <Column editable="true" title="T&#xea;n th&#x1ee3; c&#x1eaf;t" type="java.lang.Object"/>
+                        <Column editable="true" title="Th&#x1edd;i gian h&#x1eb9;n" type="java.lang.Object"/>
+                        <Column editable="true" title="S&#x1ed1; l&#x1b0;&#x1ee3;ng" type="java.lang.Object"/>
+                        <Column editable="true" title="Gi&#xe1; d&#x1ecb;ch v&#x1ee5;" type="java.lang.Object"/>
+                        <Column editable="true" title="M&#xe3; KH" type="java.lang.Object"/>
+                        <Column editable="true" title="T&#xea;n KH" type="java.lang.Object"/>
+                        <Column editable="true" title="S&#x1ed1; &#x110;T KH" type="java.lang.Object"/>
                       </Table>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JTextField" name="txtQuantity">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTotalAmount">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="T&#x1ed4;NG S&#x1ed0; TI&#x1ec0;N:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCustomerName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCustomerPhone">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtAppointmentDate">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblServiceCategory">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xca;N LO&#x1ea0;I D&#x1eca;CH V&#x1ee4;:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblService">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T&#xca;N D&#x1eca;CH V&#x1ee4;"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtServiceCategoryName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtServiceName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtBarberName">
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtBarberPosition">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblQuantity">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="S&#x1ed0; L&#x1af;&#x1ee2;NG:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtAppointmentTime">
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblAppointmentTime">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="TH&#x1edc;I GIAN H&#x1eb8;N:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnAddAppointment">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="18" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="&#x110;&#x1eb6;T L&#x1eca;CH"/>
+              </Properties>
+            </Component>
+            <Component class="java.awt.TextArea" name="txtNote">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="12" style="0"/>
+                </Property>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNote">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="GHI CH&#xda;:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboCustomer">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboCustomerActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboBarberName">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>

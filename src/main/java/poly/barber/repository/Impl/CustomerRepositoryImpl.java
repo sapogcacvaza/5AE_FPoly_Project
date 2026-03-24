@@ -1,27 +1,27 @@
 package poly.barber.repository.Impl;
 
 import java.util.List;
-import poly.barber.entity.Service;
+import poly.barber.entity.Customer;
 import poly.barber.repository.ICommonRepository;
 import poly.barber.util.XQuery;
 
-public class ServiceRepositoryImpl implements ICommonRepository<Service, Integer> {
+public class CustomerRepositoryImpl implements ICommonRepository<Customer, Integer> {
 
-    String getAll = "select * from Service";
-    String getOne = "select * from Service where ServiceID = ?";
+    String getAll = "select * from Customer";
+    String getOne = "select * from Customer where CustomerID = ?";
 
     @Override
-    public List<Service> getAll() {
-        return XQuery.getBeanList(Service.class, getAll);
+    public List<Customer> getAll() {
+        return XQuery.getBeanList(Customer.class, getAll);
     }
 
     @Override
-    public Service getOne(Integer id) {
-        return XQuery.getSingleBean(Service.class, getOne, id);
+    public Customer getOne(Integer id) {
+        return XQuery.getSingleBean(Customer.class, getOne, id);
     }
 
     @Override
-    public void add(Service obj) {
+    public void add(Customer obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -31,7 +31,7 @@ public class ServiceRepositoryImpl implements ICommonRepository<Service, Integer
     }
 
     @Override
-    public void update(Service obj) {
+    public void update(Customer obj) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
