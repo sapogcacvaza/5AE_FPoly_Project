@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 @Builder
 @Data
 public class Employee {
-    private int id;
-    private String firstname;
-    private String lastname;
+    private int employeeID;
+    private String firstName;
+    private String lastName;
     private String phone;
     private String email;
     private boolean gender;

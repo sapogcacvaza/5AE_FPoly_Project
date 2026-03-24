@@ -13,6 +13,6 @@ public class Account {
     private int accountID;
     private String username;
     private String password;
-    private int role;
-    private int employeeID;
+    private boolean role;
+    private int EmployeeID;
 }
