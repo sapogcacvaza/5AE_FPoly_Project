@@ -85,9 +85,10 @@ public class XQuery {
     
     public static void update(String sql, Object... values) {
     try {
-        // Code thực thi PreparedStatement tại đây...
-    } catch (Exception e) {
-        throw new RuntimeException(e);
+        // Gọi đến lớp XJdbc của bạn để thực thi
+        XJdbc.executeUpdate(sql, values);
+    } catch (Exception ex) {
+        throw new RuntimeException("Lỗi thực thi SQL: " + ex.getMessage(), ex);
     }
 }
 

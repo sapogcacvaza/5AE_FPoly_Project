@@ -20,6 +20,11 @@ public class Service {
     public Service() {
     }
 
+    @Override
+    public String toString() {
+        return "Service{" + "serviceCategoryID=" + serviceCategoryID + '}';
+    }
+
     public Service(int serviceID, String serviceName, BigDecimal price, int duration, int serviceCategoryID) {
         this.serviceID = serviceID;
         this.serviceName = serviceName;

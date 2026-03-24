@@ -154,4 +154,8 @@ public class XJdbc {
         String sql = "DELETE FROM Drinks WHERE UnitPrice < ?";
         var count = XJdbc.executeUpdate(sql, 0.0);
     }
+
+    public static Object value(String sql, String serviceName) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

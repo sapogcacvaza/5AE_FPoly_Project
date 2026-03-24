@@ -12,32 +12,14 @@ import poly.barber.util.XQuery;
  *
  * @author DELL
  */
-public class ServiceCategoryRepository implements ICommonRepository<ServiceCategory, Integer>{
+public class ServiceCategoryRepository {
      private String getOne = "SELECT ServiceCategoryID, ServiceCategoryName FROM ServiceCategory";
     private String sqlDetail = "SELECT ServiceCategoryID, ServiceCategoryName FROM ServiceCategory WHERE ServiceCategoryID = ?";
     
     public List<ServiceCategory>getAll(){
         return XQuery.getBeanList(ServiceCategory.class, getOne);
     }
-
-    @Override
-    public ServiceCategory getOne(Integer id) {
+    public ServiceCategory getOne(int id){
         return XQuery.getSingleBean(ServiceCategory.class, sqlDetail, id);
-    }
-
-    @Override
-    public void add(ServiceCategory obj) {
-        String sql = "INSERT INTO ServiceCategory (ServiceCategoryName) VALUES (?)";
-    XQuery.update(sql, obj.getServiceCategoryName());
-    }
-
-    @Override
-    public void delete(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public void update(ServiceCategory obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
