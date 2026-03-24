@@ -20,4 +20,8 @@ public class Invoice {
     private int status;
     private int createdByEmployeeID;
     private int appointmentID;
+    //Them
+//    private String fullname;
+//    private String phone;
+//    private String lastname;
 }

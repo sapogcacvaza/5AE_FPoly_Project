@@ -23,9 +23,9 @@ public class XJdbc {
      */
     public static Connection openConnection() {
         var driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        var dburl = "jdbc:sqlserver://localhost:1433;databaseName=FPolyCafe;encrypt=true;trustServerCertificate=true;";
+        var dburl = "jdbc:sqlserver://localhost:1433;databaseName=Barber5AE;encrypt=true;trustServerCertificate=true;";
         var username = "sa";
-        var password = "1234$";
+        var password = "123443211234@";
         try {
             if (!XJdbc.isReady()) {
                 Class.forName(driver);
@@ -135,23 +135,7 @@ public class XJdbc {
     }
 
     public static void main(String[] args) {
-        demo1();
-        demo2();
-        demo3();
+
     }
 
-    private static void demo1() {
-        String sql = "SELECT * FROM Drinks WHERE UnitPrice BETWEEN ? AND ?";
-        var rs = XJdbc.executeQuery(sql, 1.5, 5.0);
-    }
-
-    private static void demo2() {
-        String sql = "SELECT max(UnitPrice) FROM Drinks WHERE UnitPrice > ?";
-        var maxPrice = XJdbc.getValue(sql, 1.5);
-    }
-
-    private static void demo3() {
-        String sql = "DELETE FROM Drinks WHERE UnitPrice < ?";
-        var count = XJdbc.executeUpdate(sql, 0.0);
-    }
 }
