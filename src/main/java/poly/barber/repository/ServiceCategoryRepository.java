@@ -12,14 +12,44 @@ import poly.barber.util.XQuery;
  *
  * @author DELL
  */
-public class ServiceCategoryRepository {
-     private String getOne = "SELECT ServiceCategoryID, ServiceCategoryName FROM ServiceCategory";
-    private String sqlDetail = "SELECT ServiceCategoryID, ServiceCategoryName FROM ServiceCategory WHERE ServiceCategoryID = ?";
-    
-    public List<ServiceCategory>getAll(){
-        return XQuery.getBeanList(ServiceCategory.class, getOne);
+public class ServiceCategoryRepository implements ICommonRepository<ServiceCategory, Integer> {
+
+    private final String SELECT_ALL = "SELECT ServiceCategoryID, ServiceCategoryName FROM ServiceCategory";
+    private final String SELECT_BY_ID = "SELECT * FROM ServiceCategory WHERE ServiceCategoryID = ?";
+    private final String INSERT_SQL = "INSERT INTO ServiceCategory (ServiceCategoryName) VALUES (?)";
+    private final String UPDATE_SQL = "UPDATE ServiceCategory SET ServiceCategoryName = ? WHERE ServiceCategoryID = ?";
+    private final String DELETE_SQL = "DELETE FROM ServiceCategory WHERE ServiceCategoryID = ?";
+
+    public List<ServiceCategory> getAll() {
+        return XQuery.getBeanList(ServiceCategory.class, SELECT_ALL);
     }
-    public ServiceCategory getOne(int id){
-        return XQuery.getSingleBean(ServiceCategory.class, sqlDetail, id);
+
+    public ServiceCategory getByName(String ten) {
+        String sql = "SELECT * FROM ServiceCategory WHERE LTRIM(RTRIM(ServiceCategoryName)) = ?";
+        return XQuery.getSingleBean(ServiceCategory.class, sql, ten.trim());
     }
+
+    @Override
+    public ServiceCategory getOne(Integer id) {
+        return XQuery.getSingleBean(ServiceCategory.class, SELECT_BY_ID, id);
+    }
+
+    @Override
+    public void add(ServiceCategory obj) {
+        XQuery.update(INSERT_SQL,
+                obj.getServiceCategoryName());
+    }
+
+    @Override
+    public void delete(Integer id) {
+        XQuery.update(DELETE_SQL, id);
+    }
+
+    @Override
+    public void update(ServiceCategory obj) {
+        XQuery.update(UPDATE_SQL,
+                obj.getServiceCategoryName(),
+                obj.getServiceCategoryID());
+    }
+
 }

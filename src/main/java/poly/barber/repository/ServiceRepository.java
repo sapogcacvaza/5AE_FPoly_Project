@@ -59,9 +59,7 @@ public class ServiceRepository implements ICommonRepository<Service, Integer>{
 
     public Service getByName(String ten) {
         String sql = "SELECT * FROM Service WHERE LTRIM(RTRIM(ServiceName)) = ?";
-    
-    // Luôn .trim() giá trị đầu vào từ Form
-    return XQuery.getSingleBean(Service.class, sql, ten.trim());
+        return XQuery.getSingleBean(Service.class, sql, ten.trim());
     }
 }
 

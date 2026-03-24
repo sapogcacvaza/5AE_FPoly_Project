@@ -37,15 +37,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
         dcbm = (DefaultComboBoxModel) cboLoai.getModel();
         showTable(sr.getAll());
         showComBoBox(scr.getAll());
-        DefaultComboBoxModel filterModel = (DefaultComboBoxModel) cboLocLoai.getModel();
-        filterModel.removeAllElements();
-        filterModel.addElement("Tất cả");
-
-        for (ServiceCategory sc : scr.getAll()) {
-            filterModel.addElement(sc);
-        }
-
-        cboLocLoai.setSelectedIndex(0);
+        reloadCboLocLoai();
     }
 
     /**
@@ -57,6 +49,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -71,6 +64,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
         txtGia = new javax.swing.JTextField();
         txtTime = new javax.swing.JTextField();
         cboLoai = new javax.swing.JComboBox<>();
+        btnTableLoai = new javax.swing.JButton();
         btnThem = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         cboLocLoai = new javax.swing.JComboBox<>();
@@ -78,6 +72,8 @@ public class ServiceJDialog extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblService = new javax.swing.JTable();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -96,6 +92,8 @@ public class ServiceJDialog extends javax.swing.JDialog {
 
         jLabel6.setText("Loại");
 
+        txtMa.setEditable(false);
+
         txtGia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtGiaActionPerformed(evt);
@@ -111,6 +109,13 @@ public class ServiceJDialog extends javax.swing.JDialog {
         cboLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboLoaiActionPerformed(evt);
+            }
+        });
+
+        btnTableLoai.setText("+");
+        btnTableLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTableLoaiActionPerformed(evt);
             }
         });
 
@@ -132,11 +137,14 @@ public class ServiceJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtMa, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnTableLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMa)
                     .addComponent(txtTen)
                     .addComponent(txtGia)
-                    .addComponent(txtTime)
-                    .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTime))
                 .addGap(72, 72, 72))
         );
         jPanel3Layout.setVerticalGroup(
@@ -163,7 +171,9 @@ public class ServiceJDialog extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cboLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTableLoai)))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -182,6 +192,11 @@ public class ServiceJDialog extends javax.swing.JDialog {
         });
 
         cboLocLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cboLocLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboLocLoaiActionPerformed(evt);
+            }
+        });
 
         btnLoc.setText("Lọc");
         btnLoc.addActionListener(new java.awt.event.ActionListener() {
@@ -252,7 +267,7 @@ public class ServiceJDialog extends javax.swing.JDialog {
                     .addComponent(btnLoc)
                     .addComponent(cboLocLoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -342,6 +357,19 @@ public class ServiceJDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnLocActionPerformed
 
+    private void btnTableLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTableLoaiActionPerformed
+        LoaiJDialog dialog = new LoaiJDialog((java.awt.Frame) this.getOwner(), true);
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
+
+        reloadCboLocLoai();
+        showComBoBox(scr.getAll());
+    }//GEN-LAST:event_btnTableLoaiActionPerformed
+
+    private void cboLocLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboLocLoaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboLocLoaiActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -387,9 +415,11 @@ public class ServiceJDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoc;
     private javax.swing.JButton btnSua;
+    private javax.swing.JButton btnTableLoai;
     private javax.swing.JButton btnThem;
     private javax.swing.JComboBox<String> cboLoai;
     private javax.swing.JComboBox<String> cboLocLoai;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -564,5 +594,19 @@ public class ServiceJDialog extends javax.swing.JDialog {
             cboLoai.setSelectedIndex(0);
         }
         tblService.clearSelection();
+    }
+
+    private void reloadCboLocLoai() {
+        List<ServiceCategory> list = scr.getAll();
+        DefaultComboBoxModel model = (DefaultComboBoxModel) cboLocLoai.getModel();
+
+        model.removeAllElements();
+        model.addElement("Tất cả");
+
+        for (ServiceCategory sc : list) {
+            model.addElement(sc);
+        }
+
+        cboLocLoai.setSelectedIndex(0);
     }
 }
