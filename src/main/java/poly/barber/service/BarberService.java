@@ -17,9 +17,17 @@ public class BarberService {
         return repo.getOne(id);
     }
 
+    public Barber getOneByName(String name) {
+        return repo.getOneByName(name);
+    }
+    
+    public String getPositionNameByID(int id) {
+        return repo.getPositionNameByID(id);
+    }
+
     public List<String> fillToComboBarberName(List<Barber> lst) {
         List<String> barberName = new ArrayList<>();
-        
+
         barberName.add(" ");
 
         for (Barber b : lst) {

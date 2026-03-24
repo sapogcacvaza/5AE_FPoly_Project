@@ -28,4 +28,8 @@ public class ServiceService {
     public Service getOne(int id) {
         return repo.getOne(id);
     }
+
+    public Service getOneByName(String name) {
+        return repo.getOneByName(name);
+    }
 }

@@ -17,6 +17,10 @@ public class CustomerService {
         return repo.getOne(id);
     }
 
+    public Customer getOneByName(String name) {
+        return repo.getOneByName(name);
+    }
+
     public List<String> fillToComboCustomerName(List<Customer> lst) {
         List<String> customerName = new ArrayList<>();
 

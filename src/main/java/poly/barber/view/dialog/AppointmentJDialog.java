@@ -1,5 +1,7 @@
 package poly.barber.view.dialog;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -15,6 +17,7 @@ import poly.barber.service.ServiceService;
 public class AppointmentJDialog extends javax.swing.JDialog implements AppointmentController {
 
     DefaultTableModel modelCalendar = new DefaultTableModel();
+    DefaultTableModel modelService = new DefaultTableModel();
 
     DefaultComboBoxModel<String> comboWeek = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> comboBarber = new DefaultComboBoxModel<>();
@@ -29,6 +32,8 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
     BarberService serBarber = new BarberService();
     ServiceCategoryService serServiceCategory = new ServiceCategoryService();
     CustomerService serCustomer = new CustomerService();
+
+    List<Object[]> dichVu = new ArrayList<>();
 
     public AppointmentJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -252,10 +257,27 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
             }
         });
 
+        cboService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboServiceActionPerformed(evt);
+            }
+        });
+
         lblCusName1.setText("SỐ ĐT KHÁCH HÀNG:");
 
         btnAddService.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnAddService.setText("THÊM DỊCH VỤ");
+        btnAddService.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddServiceActionPerformed(evt);
+            }
+        });
+
+        cboTimeRange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboTimeRangeActionPerformed(evt);
+            }
+        });
 
         btnBarber.setText("CHỌN THỢ CẮT TÓC");
 
@@ -294,6 +316,12 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
         cboCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboCustomerActionPerformed(evt);
+            }
+        });
+
+        cboBarberName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboBarberNameActionPerformed(evt);
             }
         });
 
@@ -479,12 +507,65 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
     }//GEN-LAST:event_btnFindActionPerformed
 
     private void cboCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoryActionPerformed
-        // TODO add your handling code here:
+        txtServiceCategoryName.setText(cboCategory.getSelectedItem().toString());
     }//GEN-LAST:event_cboCategoryActionPerformed
 
     private void cboCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCustomerActionPerformed
         txtCustomerName.setText(cboCustomer.getSelectedItem().toString());
+
+        txtCustomerPhone.setText(serCustomer.getOneByName(cboCustomer.getSelectedItem().toString()).getPhone());
     }//GEN-LAST:event_cboCustomerActionPerformed
+
+    private void cboServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboServiceActionPerformed
+        txtServiceName.setText(cboService.getSelectedItem().toString());
+    }//GEN-LAST:event_cboServiceActionPerformed
+
+    private void cboTimeRangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTimeRangeActionPerformed
+        txtAppointmentTime.setText(cboTimeRange.getSelectedItem().toString());
+    }//GEN-LAST:event_cboTimeRangeActionPerformed
+
+    private void cboBarberNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboBarberNameActionPerformed
+        txtBarberName.setText(cboBarberName.getSelectedItem().toString());
+
+        String barbarName = txtBarberName.getText();
+
+        int positionID = serBarber.getOneByName(barbarName).getPositionID();
+
+        String positionName = serBarber.getPositionNameByID(positionID);
+
+        txtBarberPosition.setText(positionName);
+    }//GEN-LAST:event_cboBarberNameActionPerformed
+
+    private void btnAddServiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddServiceActionPerformed
+        int serviceID = serService.getOneByName(txtServiceName.getText()).getServiceID();
+        BigDecimal servicePrice = serService.getOneByName(txtServiceName.getText()).getPrice();
+        int customerID = serCustomer.getOneByName(txtCustomerName.getText()).getCustomerID();
+
+        Object[] row = {
+            serviceID + "",
+            txtServiceCategoryName.getText(),
+            txtServiceName.getText(),
+            txtBarberName.getText(),
+            txtAppointmentTime.getText(),
+            txtQuantity.getText(),
+            servicePrice + "",
+            customerID + "",
+            txtCustomerName.getText(),
+            txtCustomerPhone.getText()
+        };
+        
+        dichVu.add(row);
+        
+        modelService = (DefaultTableModel) tblAppointment.getModel();
+        
+        modelService.setRowCount(0);
+        
+        for (Object[] o : dichVu) {
+            modelService.addRow(row);
+        }
+        
+        clear();
+    }//GEN-LAST:event_btnAddServiceActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -655,7 +736,15 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
 
     @Override
     public void clear() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        txtCustomerName.setText("");
+        txtCustomerPhone.setText("");
+        txtAppointmentDate.setText("");
+        txtServiceCategoryName.setText("");
+        txtServiceName.setText("");
+        txtAppointmentTime.setText("");
+        txtBarberName.setText("");
+        txtBarberPosition.setText("");
+        txtQuantity.setText("");
     }
 
     @Override
