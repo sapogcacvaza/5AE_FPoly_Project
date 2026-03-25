@@ -54,6 +54,14 @@ public class AppointmentService {
         return repo.getUniversalCalendar(weekIndex, status, barber, customer);
     }
 
+    public List<String> getAppointmentHtmlDetails(java.sql.Date targetDate, java.util.Date targetTime) {
+        // Chuyển đổi từ java.util.Date sang java.sql.Time để khớp với Repository
+        java.sql.Time sqlTime = new java.sql.Time(targetTime.getTime());
+
+        // Gọi sang Repository để lấy dữ liệu
+        return repo.getAppointmentHtmlDetails(targetDate, sqlTime);
+    }
+
     public List<String> fillToComboTimeRange() {
         List<String> times = new ArrayList<>();
 

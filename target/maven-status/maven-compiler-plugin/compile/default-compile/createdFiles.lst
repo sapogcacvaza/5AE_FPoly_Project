@@ -1,3 +1,4 @@
+poly\barber\view\dialog\AppointmentJDialog$19.class
 poly\barber\service\AppointmentDetailService.class
 poly\barber\view\dialog\AppointmentJDialog$12.class
 poly\barber\entity\BarberPosition.class
@@ -18,14 +19,15 @@ poly\barber\entity\Barber.class
 poly\barber\entity\Invoice$InvoiceBuilder.class
 poly\barber\view\Barber5AEJFrame$1.class
 poly\barber\repository\Impl\BarberRepositoryImpl.class
-poly\barber\view\dialog\AppointmentJDialog$17$1.class
 poly\barber\view\dialog\AppointmentJDialog$9.class
+poly\barber\view\dialog\AppointmentJDialog$18.class
 poly\barber\view\dialog\AppointmentJDialog$2.class
 poly\barber\view\dialog\AppointmentJDialog$11.class
 poly\barber\controller\CrudController.class
 poly\barber\entity\Account$AccountBuilder.class
 poly\barber\entity\BarberPosition$BarberPositionBuilder.class
 poly\barber\view\dialog\AppointmentJDialog$15.class
+poly\barber\view\dialog\AppointmentJDialog$19$1.class
 poly\barber\entity\AppointmentDetail.class
 poly\barber\repository\Impl\ServiceCategoryRepositoryImpl.class
 poly\barber\entity\Appointment.class

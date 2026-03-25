@@ -21,6 +21,7 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
 
     DefaultComboBoxModel<String> comboWeek = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> comboBarber = new DefaultComboBoxModel<>();
+    DefaultComboBoxModel<String> comboBarberName = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> comboCategory = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> comboService = new DefaultComboBoxModel<>();
     DefaultComboBoxModel<String> comboCustomer = new DefaultComboBoxModel<>();
@@ -41,7 +42,7 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
 
         open();
 
-        tblCalendar.setRowHeight(130);
+        tblCalendar.setRowHeight(110);
     }
 
     @SuppressWarnings("unchecked")
@@ -63,6 +64,10 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
         cboBarber = new javax.swing.JComboBox<>();
         btnCancelFilter = new javax.swing.JButton();
         btnFind = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         panelCrud = new javax.swing.JPanel();
         btnChooseCustomer = new javax.swing.JButton();
         lblCusName = new javax.swing.JLabel();
@@ -114,7 +119,13 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
         });
 
         btnAddAppoint.setText("Thêm lịch");
+        btnAddAppoint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddAppointActionPerformed(evt);
+            }
+        });
 
+        rdoPending.setBackground(new java.awt.Color(204, 204, 204));
         btnGroupStatus.add(rdoPending);
         rdoPending.setText("Chưa đến");
         rdoPending.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +134,7 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
             }
         });
 
+        rdoCanceled.setBackground(new java.awt.Color(255, 204, 204));
         btnGroupStatus.add(rdoCanceled);
         rdoCanceled.setText("Đã hủy");
         rdoCanceled.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +143,7 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
             }
         });
 
+        rdoCheckIned.setBackground(new java.awt.Color(153, 255, 153));
         btnGroupStatus.add(rdoCheckIned);
         rdoCheckIned.setText("Đã đến");
         rdoCheckIned.addActionListener(new java.awt.event.ActionListener() {
@@ -163,6 +176,11 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
                 return canEdit [columnIndex];
             }
         });
+        tblCalendar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCalendarMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCalendar);
 
         cboBarber.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
@@ -172,52 +190,66 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
             }
         });
 
-        btnCancelFilter.setText("bỏ lọc");
+        btnCancelFilter.setText("BỎ LỌC");
         btnCancelFilter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelFilterActionPerformed(evt);
             }
         });
 
-        btnFind.setText("Tìm");
+        btnFind.setText("TÌM");
         btnFind.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFindActionPerformed(evt);
             }
         });
 
+        jLabel1.setText("LỌC THEO THỢ CẮT");
+
+        jLabel2.setText("LỌC THEO TUẦN");
+
+        jLabel3.setText("TÌM KIẾM THEO TÊN VÀ SĐT KH");
+
+        jLabel4.setText("LỌC THEO TÌNH TRẠNG");
+
         javax.swing.GroupLayout panelCalendarLayout = new javax.swing.GroupLayout(panelCalendar);
         panelCalendar.setLayout(panelCalendarLayout);
         panelCalendarLayout.setHorizontalGroup(
             panelCalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelCalendarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelCalendarLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(panelCalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelCalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelCalendarLayout.createSequentialGroup()
+                        .addComponent(rdoAll, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdoPending, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdoCheckIned, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(rdoCanceled, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelFilter)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(panelCalendarLayout.createSequentialGroup()
+                        .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFind)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(cboBarber, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(cboWeek, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnAddAppoint, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(panelCalendarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFind, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnFind)
-                .addGap(58, 58, 58)
-                .addComponent(cboBarber, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cboWeek, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 282, Short.MAX_VALUE)
-                .addComponent(btnAddAppoint, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(162, 162, 162))
-            .addGroup(panelCalendarLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(rdoAll, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rdoPending, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rdoCheckIned, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(rdoCanceled, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCancelFilter)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         panelCalendarLayout.setVerticalGroup(
             panelCalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -228,14 +260,18 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
                     .addComponent(cboWeek, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAddAppoint)
                     .addComponent(cboBarber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnFind))
+                    .addComponent(btnFind)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelCalendarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rdoPending)
                     .addComponent(rdoCanceled)
                     .addComponent(rdoCheckIned)
                     .addComponent(btnCancelFilter)
-                    .addComponent(rdoAll))
+                    .addComponent(rdoAll)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 737, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -553,19 +589,72 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
             txtCustomerName.getText(),
             txtCustomerPhone.getText()
         };
-        
+
         dichVu.add(row);
-        
+
         modelService = (DefaultTableModel) tblAppointment.getModel();
-        
+
         modelService.setRowCount(0);
-        
+
         for (Object[] o : dichVu) {
             modelService.addRow(row);
         }
-        
+
         clear();
     }//GEN-LAST:event_btnAddServiceActionPerformed
+
+    private void tblCalendarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCalendarMouseClicked
+        int row = tblCalendar.getSelectedRow();
+        int col = tblCalendar.getSelectedColumn();
+
+        // 1. Kiểm tra: Không làm gì nếu click vào cột Time (cột 0) hoặc vùng trống
+        if (col <= 0 || row == -1) {
+            return;
+        }
+
+        // Thực hiện khi người dùng Double Click (nhấn 2 lần) để tránh bấm nhầm
+        if (evt.getClickCount() == 2) {
+            try {
+                // 2. Lấy Giờ từ cột đầu tiên (Ví dụ: "08:00")
+                // Thêm ":00" để đúng định dạng HH:mm:ss cho SQL Time
+                String timeStr = tblCalendar.getValueAt(row, 0).toString() + ":00";
+                java.sql.Time targetTime = java.sql.Time.valueOf(timeStr);
+
+                // 3. Lấy Ngày từ tiêu đề cột (Định dạng của bạn: "Th ... - dd/MM/yyyy")
+                String header = tblCalendar.getColumnName(col);
+                // Cắt chuỗi lấy phần sau dấu "-"
+                String dateStr = header.substring(header.lastIndexOf("-") + 1).trim();
+
+                // Chuyển chuỗi dd/MM/yyyy sang java.sql.Date
+                java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+                java.util.Date parsedDate = sdf.parse(dateStr);
+                java.sql.Date targetDate = new java.sql.Date(parsedDate.getTime());
+
+                // 4. Gọi Service để lấy danh sách HTML chi tiết
+                // Lưu ý: Thay 'appointmentService' bằng tên biến service bạn đã khai báo
+                List<String> details = serAppointment.getAppointmentHtmlDetails(targetDate, targetTime);
+
+                // 5. Hiển thị thông báo
+                if (details != null && !details.isEmpty()) {
+                    Object[] message = details.toArray();
+                    javax.swing.JOptionPane.showMessageDialog(this,
+                            message,
+                            "Chi tiết lịch hẹn [" + dateStr + " " + timeStr.substring(0, 5) + "]",
+                            javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Không có lịch hẹn trong khung giờ này.");
+                }
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                javax.swing.JOptionPane.showMessageDialog(this, "Có lỗi xảy ra khi lấy chi tiết: " + ex.getMessage());
+            }
+        }
+    }//GEN-LAST:event_tblCalendarMouseClicked
+
+    private void btnAddAppointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAppointActionPerformed
+        Tabbs.setSelectedIndex(1);
+    }//GEN-LAST:event_btnAddAppointActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -598,8 +687,9 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
 
         comboTimeRange = (DefaultComboBoxModel<String>) cboTimeRange.getModel();
 
-        comboBarber = (DefaultComboBoxModel<String>) cboBarberName.getModel();
+        comboBarberName = (DefaultComboBoxModel<String>) cboBarberName.getModel();
 
+        // 
         fillToComboWeek();
 
         fillToComboBarber();
@@ -686,6 +776,16 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
 
         for (String item : items) {
             comboBarber.addElement(item);
+        }
+    }
+
+    public void fillToComboBarberName() {
+        comboBarberName.removeAllElements();
+
+        List<String> items = serBarber.fillToComboBarberName(serBarber.getAll());
+
+        for (String item : items) {
+            comboBarberName.addElement(item);
         }
     }
 
@@ -810,6 +910,10 @@ public class AppointmentJDialog extends javax.swing.JDialog implements Appointme
     private javax.swing.JComboBox<String> cboService;
     private javax.swing.JComboBox<String> cboTimeRange;
     private javax.swing.JComboBox<String> cboWeek;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblAppointmentTime;

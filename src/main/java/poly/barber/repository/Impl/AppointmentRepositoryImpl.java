@@ -15,121 +15,18 @@ public class AppointmentRepositoryImpl implements ICommonRepository<Appointment,
 
     String getAll = "select * from Appointment";
     String getUniversalCalendar = "{CALL getUniversalCalendar(?, ?, ?, ?)}";
-//    String getWeekCalendar = "{CALL getWeekCalendar}";
-//    String getLastWeekCalendar = "{CALL getLastWeekCalendar}";
-//    String getNextWeekCalendar = "{CALL getNextWeekCalendar}";
+    String getUniversalCalendar_ShowAll = "{CALL getUniversalCalendar_ShowAll(?, ?, ?, ?)}";
 
     @Override
     public List<Appointment> getAll() {
         return XQuery.getBeanList(Appointment.class, getAll);
     }
 
-//    public List<Object[]> getWeekCalendar() {
-//        List<Object[]> list = new ArrayList<>();
-//        // Cú pháp gọi Store Procedure trong SQL Server
-//
-//        try (java.sql.Connection con = poly.barber.util.XJdbc.openConnection(); java.sql.CallableStatement cs = con.prepareCall(getWeekCalendar)) {
-//
-//            java.sql.ResultSet rs = cs.executeQuery();
-//            while (rs.next()) {
-//                // Procedure trả về 8 cột: Time, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-//                Object[] row = new Object[8];
-//                row[0] = rs.getString("Time");
-//                row[1] = rs.getString("Monday");
-//                row[2] = rs.getString("Tuesday");
-//                row[3] = rs.getString("Wednesday");
-//                row[4] = rs.getString("Thursday");
-//                row[5] = rs.getString("Friday");
-//                row[6] = rs.getString("Saturday");
-//                row[7] = rs.getString("Sunday");
-//
-//                // Xử lý để không hiện chữ "null" trên bảng JTable
-//                for (int i = 1; i < 8; i++) {
-//                    if (row[i] == null) {
-//                        row[i] = "";
-//                    }
-//                }
-//
-//                list.add(row);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
-//
-//    public List<Object[]> getLastWeekCalendar() {
-//        List<Object[]> list = new ArrayList<>();
-//        // Cú pháp gọi Store Procedure trong SQL Server
-//
-//        try (java.sql.Connection con = poly.barber.util.XJdbc.openConnection(); java.sql.CallableStatement cs = con.prepareCall(getLastWeekCalendar)) {
-//
-//            java.sql.ResultSet rs = cs.executeQuery();
-//            while (rs.next()) {
-//                // Procedure trả về 8 cột: Time, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-//                Object[] row = new Object[8];
-//                row[0] = rs.getString("Time");
-//                row[1] = rs.getString("Monday");
-//                row[2] = rs.getString("Tuesday");
-//                row[3] = rs.getString("Wednesday");
-//                row[4] = rs.getString("Thursday");
-//                row[5] = rs.getString("Friday");
-//                row[6] = rs.getString("Saturday");
-//                row[7] = rs.getString("Sunday");
-//
-//                // Xử lý để không hiện chữ "null" trên bảng JTable
-//                for (int i = 1; i < 8; i++) {
-//                    if (row[i] == null) {
-//                        row[i] = "";
-//                    }
-//                }
-//
-//                list.add(row);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
-//
-//    public List<Object[]> getNextWeekCalendar() {
-//        List<Object[]> list = new ArrayList<>();
-//        // Cú pháp gọi Store Procedure trong SQL Server
-//
-//        try (java.sql.Connection con = poly.barber.util.XJdbc.openConnection(); java.sql.CallableStatement cs = con.prepareCall(getNextWeekCalendar)) {
-//
-//            java.sql.ResultSet rs = cs.executeQuery();
-//            while (rs.next()) {
-//                // Procedure trả về 8 cột: Time, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
-//                Object[] row = new Object[8];
-//                row[0] = rs.getString("Time");
-//                row[1] = rs.getString("Monday");
-//                row[2] = rs.getString("Tuesday");
-//                row[3] = rs.getString("Wednesday");
-//                row[4] = rs.getString("Thursday");
-//                row[5] = rs.getString("Friday");
-//                row[6] = rs.getString("Saturday");
-//                row[7] = rs.getString("Sunday");
-//
-//                // Xử lý để không hiện chữ "null" trên bảng JTable
-//                for (int i = 1; i < 8; i++) {
-//                    if (row[i] == null) {
-//                        row[i] = "";
-//                    }
-//                }
-//
-//                list.add(row);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
     public List<Object[]> getUniversalCalendar(int weekIndex, int status, String barber, String customer) {
         List<Object[]> list = new ArrayList<>();
         // Tên Procedure mới có 4 tham số
 
-        try (java.sql.Connection con = poly.barber.util.XJdbc.openConnection(); java.sql.CallableStatement cs = con.prepareCall(getUniversalCalendar)) {
+        try (java.sql.Connection con = poly.barber.util.XJdbc.openConnection(); java.sql.CallableStatement cs = con.prepareCall(getUniversalCalendar_ShowAll)) {
 
             // Truyền các tham số vào Procedure
             cs.setInt(1, weekIndex);
@@ -162,6 +59,23 @@ public class AppointmentRepositoryImpl implements ICommonRepository<Appointment,
             e.printStackTrace();
         }
         return list;
+    }
+
+    public List<String> getAppointmentHtmlDetails(java.sql.Date targetDate, java.sql.Time targetTime) {
+        List<String> details = new ArrayList<>();
+        String sql = "{call getAppointmentDetailsBySlot(?, ?)}";
+        try (java.sql.Connection con = poly.barber.util.XJdbc.openConnection(); java.sql.CallableStatement cs = con.prepareCall(sql)) {
+            cs.setDate(1, targetDate);
+            cs.setTime(2, targetTime);
+            try (java.sql.ResultSet rs = cs.executeQuery()) {
+                while (rs.next()) {
+                    details.add(rs.getNString("FullDetailHtml"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return details;
     }
 
     @Override
