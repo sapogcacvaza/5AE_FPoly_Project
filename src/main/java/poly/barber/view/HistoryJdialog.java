@@ -477,7 +477,7 @@ public class HistoryJdialog extends javax.swing.JDialog {
                 employeeRepo.getOne(i.getCreatedByEmployeeID()).getFirstname() + " "
                 + employeeRepo.getOne(i.getCreatedByEmployeeID()).getLastname(),
                 //tên khách
-                customer.getFullname(),
+                customer.getFullName(),
                 //sdd 
                 customer.getPhone(),
                 i.getStatus() == 1 ? "Đã Thanh Toán" : "Chưa Thanh Toán",
@@ -519,7 +519,7 @@ public class HistoryJdialog extends javax.swing.JDialog {
                 int khachHangId = app.getCustomerID();
                 Customer kh = customerRepo.getOne(khachHangId);
                 if (kh != null) {
-                    txtTenKH.setText(kh.getFullname());
+                    txtTenKH.setText(kh.getFullName());
                     txtSDT.setText(kh.getPhone());
                 } else {
                     txtTenKH.setText("Không có thông tin");

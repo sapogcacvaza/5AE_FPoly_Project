@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class Customer {
     private int customerID;
-    private String fullname;
+    private String fullName;
     private String phone;
     private String email;
     private boolean gender;
